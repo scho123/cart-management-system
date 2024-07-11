@@ -30,7 +30,7 @@ public class Cart {
             }
 
         }
-        return null;
+        return false;
     }
 
     public List<ItemDTO> getCart(int userNum) {

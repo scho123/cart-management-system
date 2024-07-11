@@ -30,6 +30,8 @@ public class UserController {
             view.displayMessage(user.getUserId() + "님, 로그인 완료 되셨습니다.");
             isLoggedIn = true;
             userNum = user.getUserNum();
+        } else {
+            view.displayMessage("아이디나 비밀번호가 틀렸습니다.");
         }
     }
 
@@ -39,6 +41,7 @@ public class UserController {
         isLoggedIn = false;
     }
 
+    // 회원탈퇴
     public void delete() {
         boolean isSuccess = userList.deleteUser();
 
@@ -46,6 +49,8 @@ public class UserController {
             userNum = 0;
             isLoggedIn = false;
             view.displayMessage("회원탈퇴 완료");
+        } else {
+            view.displayMessage("아이디나 비밀번호가 틀렸습니다.");
         }
     }
 

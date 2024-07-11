@@ -11,7 +11,7 @@ public class View {
 
     public void viewCartItems(List<ItemDTO> list) {
         for (ItemDTO i : list) {
-            System.out.print(i + " ");
+            System.out.println(i);
         }
     }
 }

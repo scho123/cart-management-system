@@ -23,6 +23,7 @@ public class Run {
                 System.out.print("메뉴를 고르세요 : ");
                 int menu = sc.nextInt();
                 sc.nextLine();
+                System.out.println();
 
                 switch (menu) {
                     case 1:
@@ -39,7 +40,7 @@ public class Run {
                 System.out.println("================ 회원제 쇼핑몰 ================");
                 System.out.println("1) 내 장바구니 조회");
                 System.out.println("2) 내 장바구니에 아이템 추가");
-                System.out.println("3) 내 장바구니 수정");
+                System.out.println("3) 내 장바구니에서 아이템 삭제");
                 System.out.println("4) 내 장바구니 비우기");
                 System.out.println("5) 로그아웃");
                 System.out.println("6) 회원 탈퇴");
@@ -47,6 +48,7 @@ public class Run {
                 System.out.print("메뉴를 고르세요 : ");
                 int menu = sc.nextInt();
                 sc.nextLine();
+                System.out.println();
 
                 switch (menu) {
                     case 1: cartController.viewCart(); break;

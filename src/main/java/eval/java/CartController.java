@@ -34,6 +34,8 @@ public class CartController {
         Boolean isSuccess = cart.deleteFromCart(UserController.userNum, delItem);
         if (isSuccess) {
             view.displayMessage("장바구니에서 해당 아이템 삭제 완료");
+        } else {
+            view.displayMessage("삭제할 아이템이 조회되지 않습니다.");
         }
     }
 
