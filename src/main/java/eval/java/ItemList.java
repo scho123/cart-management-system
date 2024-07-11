@@ -55,6 +55,7 @@ public class ItemList {
 
     public int getDeleteItem() {
         System.out.print("삭제할 아이템 넘버(고유 정수 타입 코드) : ");
-        return sc.nextInt();
+        int delNum =  sc.nextInt();
+        return delNum;
     }
 }
