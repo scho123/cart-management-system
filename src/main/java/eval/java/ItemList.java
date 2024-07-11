@@ -44,6 +44,7 @@ public class ItemList {
         return itemList;
     }
 
+    /* 이 부분 수정해야 함 !!!!!*/
     public Boolean checkDuplicateNum(int num) {
         for (ItemDTO i : itemList) {
             if (i.getItemNum() == num) {
