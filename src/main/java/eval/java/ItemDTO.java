@@ -42,7 +42,7 @@ public class ItemDTO {
     public String toString() {
         return "내 장바구니 {" +
                 "아이템 번호=" + itemNum +
-                ", 아이템명 ='" + itemName + '\'' +
+                ", 아이템명='" + itemName + '\'' +
                 ", 아이템 가격=" + itemPrice +
                 '}';
     }

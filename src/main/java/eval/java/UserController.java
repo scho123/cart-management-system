@@ -2,15 +2,27 @@ package eval.java;
 
 public class UserController {
 
-    public static boolean isLoggedIn = false;
-    public static int userNum;
+    private boolean isLoggedIn = false; // Instance variable
+    private int userNum;
 
     private UserList userList;
+    CartController controller;
     private View view;
+    private Cart cart;
 
     public UserController() {
         userList = new UserList();
+        controller = new CartController();
         view = new View();
+        cart = new Cart();
+    }
+
+    public boolean isLoggedIn() {
+        return isLoggedIn;
+    }
+
+    public int getUserNum() {
+        return userNum;
     }
 
     // 회원 가입
@@ -46,8 +58,12 @@ public class UserController {
         boolean isSuccess = userList.deleteUser();
 
         if (isSuccess) {
+            controller.emptyCart(userNum);
+//            Boolean is = cart.emptyCart(userNum);
+//            System.out.println(is);
             userNum = 0;
             isLoggedIn = false;
+
             view.displayMessage("회원탈퇴 완료");
         } else {
             view.displayMessage("아이디나 비밀번호가 틀렸습니다.");

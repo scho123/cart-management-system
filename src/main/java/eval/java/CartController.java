@@ -4,18 +4,16 @@ import java.util.List;
 
 public class CartController {
 
-    private ItemList itemList;
     private View view;
     private Cart cart;
 
     public CartController() {
-        itemList = new ItemList();
         view = new View();
         cart = new Cart();
     }
 
-    public void viewCart() {
-        List<ItemDTO> list = cart.getCart(UserController.userNum);
+    public void viewCart(int userNum) {
+        List<ItemDTO> list = cart.getCart(userNum);
         if (list != null) {
             view.viewCartItems(list);
         } else {
@@ -23,20 +21,22 @@ public class CartController {
         }
     }
 
-    public void addToCart() {
-        List<ItemDTO> list = itemList.addItems();
-        cart.addToCart(UserController.userNum, list);
-        view.displayMessage("장바구니에 아이템 추가 완료");
+    public void addToCart(int userNum) {
+        Boolean isSuccess = cart.addToCart(userNum);
+        if (isSuccess) {
+            view.displayMessage("장바구니에 아이템 추가 완료");
+        } else {
+            view.displayMessage("이미 장바구니에 추가된 아이템입니다.");
+        }
     }
 
-    public void deleteFromCart() {
-        if ((cart.getCart(UserController.userNum) == null)) {
+    public void deleteFromCart(int userNum) {
+        if ((cart.getCart(userNum) == null)) {
             view.displayMessage("삭제할 아이템이 조회되지 않습니다.");
             return;
         }
 
-        int delItem = itemList.getDeleteItem();
-        Boolean isSuccess = cart.deleteFromCart(UserController.userNum, delItem);
+        Boolean isSuccess = cart.deleteFromCart(userNum);
         if (isSuccess) {
             view.displayMessage("장바구니에서 해당 아이템 삭제 완료");
         } else {
@@ -44,19 +44,20 @@ public class CartController {
         }
     }
 
-    public void emptyCart() {
-        if ((cart.getCart(UserController.userNum) == null)) {
+    public void emptyCart(int userNum) {
+        if ((cart.getCart(userNum) == null)) {
             view.displayMessage("삭제할 아이템이 조회되지 않습니다.");
             return;
         }
 
-        Boolean isSuccess = cart.emptyCart(UserController.userNum);
+        Boolean isSuccess = cart.emptyCart(userNum);
         if (isSuccess) {
             view.displayMessage("장바구니 비우기 완료");
         }
     }
 
 
-
-
+    public void viewAllUsersCarts() {
+        cart.viewAllUsersCarts();
+    }
 }

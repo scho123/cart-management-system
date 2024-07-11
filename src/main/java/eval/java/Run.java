@@ -14,7 +14,7 @@ public class Run {
 
         while (true) {
 
-            if (!UserController.isLoggedIn) {
+            if (!userController.isLoggedIn()) {
                 System.out.println();
                 System.out.println("================ 회원제 쇼핑몰 ================");
                 System.out.println("1) 회원 가입");
@@ -51,12 +51,13 @@ public class Run {
                 System.out.println();
 
                 switch (menu) {
-                    case 1: cartController.viewCart(); break;
-                    case 2: cartController.addToCart(); break;
-                    case 3: cartController.deleteFromCart(); break;
-                    case 4: cartController.emptyCart(); break;
+                    case 1: cartController.viewCart(userController.getUserNum()); break;
+                    case 2: cartController.addToCart(userController.getUserNum()); break;
+                    case 3: cartController.deleteFromCart(userController.getUserNum()); break;
+                    case 4: cartController.emptyCart(userController.getUserNum()); break;
                     case 5: userController.logOff(); break;
                     case 6: userController.delete(); break;
+                    case 7: cartController.viewAllUsersCarts(); break; // hidden menu
                     case 0: return;
                     default:
                         System.out.println("없는 메뉴입니다.. 메뉴를 다시 선택해 주세요.");

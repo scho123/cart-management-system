@@ -9,9 +9,13 @@ public class UserList {
     Scanner sc = new Scanner(System.in);
 
     private List<UserDTO> userList;
-    private static int userCnt = 0;
+    private Cart cart;
+    private CartController controller;
+    private int userCnt = 0;
 
     public UserList() {
+        this.cart = new Cart();
+        controller = new CartController();
         this.userList = new ArrayList<>();
     }
 
@@ -87,6 +91,9 @@ public class UserList {
 
         for (UserDTO u : userList) {
             if (u.getUserId().equals(id) && u.getUserPw().equals(pw)) {
+//                cart.emptyCart(u.getUserNum());
+//                System.out.println(u.getUserNum());
+//                controller.emptyCart(u.getUserNum());
                 userList.remove(u);
                 return true;
             }
