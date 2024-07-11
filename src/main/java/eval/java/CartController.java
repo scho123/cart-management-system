@@ -30,6 +30,11 @@ public class CartController {
     }
 
     public void deleteFromCart() {
+        if ((cart.getCart(UserController.userNum) == null)) {
+            view.displayMessage("삭제할 아이템이 조회되지 않습니다.");
+            return;
+        }
+
         int delItem = itemList.getDeleteItem();
         Boolean isSuccess = cart.deleteFromCart(UserController.userNum, delItem);
         if (isSuccess) {
@@ -40,6 +45,11 @@ public class CartController {
     }
 
     public void emptyCart() {
+        if ((cart.getCart(UserController.userNum) == null)) {
+            view.displayMessage("삭제할 아이템이 조회되지 않습니다.");
+            return;
+        }
+
         Boolean isSuccess = cart.emptyCart(UserController.userNum);
         if (isSuccess) {
             view.displayMessage("장바구니 비우기 완료");
