@@ -55,7 +55,7 @@ public class UserController {
         boolean isSuccess = userList.deleteUser();
 
         if (isSuccess) {
-            Boolean isEmpty = cart.emptyCart(userNum);
+            cart.emptyCart(userNum);
             userNum = 0;
             isLoggedIn = false;
 
