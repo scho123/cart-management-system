@@ -5,7 +5,7 @@ import java.util.List;
 public class CartController {
 
     private View view = new View();
-    private Cart cart = Cart.getInstance();
+    private final Cart cart = Cart.getInstance();
 
     public void viewCart(int userNum) {
         List<ItemDTO> list = cart.getCart(userNum);

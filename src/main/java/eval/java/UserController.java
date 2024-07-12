@@ -7,7 +7,7 @@ public class UserController {
 
     private UserList userList;
     private View view;
-    private Cart cart = Cart.getInstance();
+    private final Cart cart = Cart.getInstance();
 
     public UserController() {
         userList = new UserList();

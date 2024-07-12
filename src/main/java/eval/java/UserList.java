@@ -8,7 +8,7 @@ public class UserList {
 
     Scanner sc = new Scanner(System.in);
 
-    private List<UserDTO> userList = new ArrayList<>();
+    private final List<UserDTO> userList = new ArrayList<>();
     private int userCnt = 0;
 
     // 중복 아이디 여부 체크
