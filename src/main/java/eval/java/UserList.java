@@ -8,16 +8,8 @@ public class UserList {
 
     Scanner sc = new Scanner(System.in);
 
-    private List<UserDTO> userList;
-    private Cart cart;
-    private CartController controller;
+    private List<UserDTO> userList = new ArrayList<>();;
     private int userCnt = 0;
-
-    public UserList() {
-        this.cart = new Cart();
-        controller = new CartController();
-        this.userList = new ArrayList<>();
-    }
 
     // 중복 아이디 여부 체크
     public Boolean checkDuplicateId(String id) {
@@ -91,9 +83,6 @@ public class UserList {
 
         for (UserDTO u : userList) {
             if (u.getUserId().equals(id) && u.getUserPw().equals(pw)) {
-//                cart.emptyCart(u.getUserNum());
-//                System.out.println(u.getUserNum());
-//                controller.emptyCart(u.getUserNum());
                 userList.remove(u);
                 return true;
             }

@@ -4,14 +4,21 @@ import java.util.*;
 
 public class Cart {
 
-    Scanner sc = new Scanner(System.in);
-
     private Map<Integer, List<ItemDTO>> shoppingCart;
 
-    public Cart() {
+    private static Cart instance;
+    private Cart() {
         shoppingCart = new HashMap<>();
     }
 
+    public static Cart getInstance() {
+        if (instance == null) {
+            instance = new Cart();
+        }
+        return instance;
+    }
+
+    Scanner sc = new Scanner(System.in);
 
     public void viewAllUsersCarts() {
         for (Map.Entry<Integer, List<ItemDTO>> entry : shoppingCart.entrySet()) {
@@ -84,12 +91,22 @@ public class Cart {
     }
 
     public Boolean emptyCart(int userNum) {
+//        if (shoppingCart.containsKey(userNum)) {
+//            System.out.println(shoppingCart.containsKey(userNum));
+//            shoppingCart.remove(userNum);
+//            return true;
+//        }
+//        return false;
+
+        System.out.println("Attempting to empty cart for userNum: " + userNum);
         if (shoppingCart.containsKey(userNum)) {
-            System.out.println(shoppingCart.containsKey(userNum));
             shoppingCart.remove(userNum);
+            System.out.println("Cart emptied for userNum: " + userNum);
             return true;
+        } else {
+            System.out.println("No cart found for userNum: " + userNum);
+            return false;
         }
-        return false;
 
     }
 

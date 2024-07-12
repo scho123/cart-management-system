@@ -6,15 +6,12 @@ public class UserController {
     private int userNum;
 
     private UserList userList;
-    CartController controller;
     private View view;
-    private Cart cart;
+    private Cart cart = Cart.getInstance();
 
     public UserController() {
         userList = new UserList();
-        controller = new CartController();
         view = new View();
-        cart = new Cart();
     }
 
     public boolean isLoggedIn() {
@@ -58,9 +55,7 @@ public class UserController {
         boolean isSuccess = userList.deleteUser();
 
         if (isSuccess) {
-            controller.emptyCart(userNum);
-//            Boolean is = cart.emptyCart(userNum);
-//            System.out.println(is);
+            Boolean isEmpty = cart.emptyCart(userNum);
             userNum = 0;
             isLoggedIn = false;
 
@@ -69,6 +64,5 @@ public class UserController {
             view.displayMessage("아이디나 비밀번호가 틀렸습니다.");
         }
     }
-
 
 }
